@@ -1,97 +1,86 @@
-# Data-Structure-Assignment
+# 🚀 Data-Structure-Assignment
 
-🔹 Q1: Reverse a String using Stack
- Concept
+This repository contains **Stack and Queue programs in C** with algorithms and implementations.
 
-Stack (LIFO – Last In First Out)
+## 🔹 Q1: Reverse a String using Stack
+### ⚙️ Algorithm
+- Start  
+- Read the string  
+- Push each character into stack  
+- Pop characters one by one  
+- Print reversed string  
+- Stop  
 
- Algorithm
-Start
-Read the string
-Push each character into stack
-Pop characters one by one
-Print popped characters (reversed string)
-Stop
-
- Code:
-
+### 💻 Code
+```c
 #include <stdio.h>
 #include <string.h>
-
 #define MAX 100
 
 char stack[MAX];
 int top = -1;
 
-void push(char ch) {
-    stack[++top] = ch;
-}
+void push(char ch){ stack[++top] = ch; }
+char pop(){ return stack[top--]; }
 
-char pop() {
-    return stack[top--];
-}
-
-int main() {
+int main(){
     char str[100];
     int i;
 
     printf("Enter string: ");
     scanf("%s", str);
 
-    for(i = 0; i < strlen(str); i++) {
+    for(i=0;i<strlen(str);i++)
         push(str[i]);
-    }
 
     printf("Reversed string: ");
-    while(top != -1) {
+    while(top!=-1)
         printf("%c", pop());
-    }
 
     return 0;
-}
-Q2: Balanced Parentheses
- Concept
+} ## 🔹 Q2: Balanced Parentheses
 
-Stack
+### 🧠 Concept
+**Stack (LIFO – Last In First Out)**
 
- Algorithm
-Start
-Read expression
-Push '(' into stack
-If ')' found → pop
-If stack empty → balanced
-Else → not balanced
-Stop
+### ⚙️ Algorithm
+- Start  
+- Read expression  
+- Push '(' into stack  
+- If ')' found → pop  
+- If stack empty → balanced  
+- Else → not balanced  
+- Stop  
 
- Code:
-
-
+### 💻 Code
+```c
 #include <stdio.h>
 #include <string.h>
 
 char stack[100];
 int top = -1;
 
-void push(char ch) {
+void push(char ch){
     stack[++top] = ch;
 }
 
-void pop() {
-    if(top != -1) top--;
+void pop(){
+    if(top != -1)
+        top--;
 }
 
-int main() {
+int main(){
     char exp[100];
     int i;
 
     printf("Enter expression: ");
     scanf("%s", exp);
 
-    for(i = 0; i < strlen(exp); i++) {
+    for(i = 0; i < strlen(exp); i++){
         if(exp[i] == '(')
             push('(');
-        else if(exp[i] == ')') {
-            if(top == -1) {
+        else if(exp[i] == ')'){
+            if(top == -1){
                 printf("Not Balanced");
                 return 0;
             }
@@ -104,35 +93,33 @@ int main() {
     else
         printf("Not Balanced");
 
-    return 0;
-}
-Q3: Next Greater Element
- Concept
+    return 0;## 🔹 Q3: Next Greater Element
 
-Array + Comparison Logic
+### 🧠 Concept
+**Array + Comparison Logic**
 
- Algorithm
-Start
-Read array
-Traverse array
-Compare each element with next
-Find next greater element
-If none → print -1
-Stop
+### ⚙️ Algorithm
+- Start  
+- Read array  
+- Traverse array  
+- Compare each element with next  
+- Find next greater element  
+- If none → print -1  
+- Stop  
 
-code:
-
+### 💻 Code
+```c
 #include <stdio.h>
 
-int main() {
+int main(){
     int arr[] = {4, 5, 2, 10, 8};
     int n = 5;
     int i, j, next;
 
-    for(i = 0; i < n; i++) {
+    for(i = 0; i < n; i++){
         next = -1;
-        for(j = i + 1; j < n; j++) {
-            if(arr[j] > arr[i]) {
+        for(j = i + 1; j < n; j++){
+            if(arr[j] > arr[i]){
                 next = arr[j];
                 break;
             }
@@ -141,43 +128,43 @@ int main() {
     }
 
     return 0;
-}
+} 
+}## 🔹 Q4: Printer Queue Simulation
 
-Q4: Printer Queue Simulation
- Concept
+### 🧠 Concept
+**Queue (FIFO – First In First Out)**
 
-Queue (FIFO – First In First Out)
+### ⚙️ Algorithm
+- Start  
+- Create queue  
+- Show menu  
+- Insert document (enqueue)  
+- Print document (dequeue)  
+- Display queue  
+- Stop  
 
- Algorithm
-Start
-Create queue
-Show menu
-Insert document (enqueue)
-Print document (dequeue)
-Display queue
-Stop
-
-code:
+### 💻 Code
+```c
 #include <stdio.h>
 
 #define MAX 5
 
 int queue[MAX], front = -1, rear = -1;
 
-void enqueue(int x) {
+void enqueue(int x){
     if(rear == MAX - 1)
         printf("Queue Full\n");
-    else {
+    else{
         if(front == -1)
             front = 0;
         queue[++rear] = x;
     }
 }
 
-void dequeue() {
+void dequeue(){
     if(front == -1)
         printf("Queue Empty\n");
-    else {
+    else{
         printf("Printed document: %d\n", queue[front]);
         front++;
         if(front > rear)
@@ -185,25 +172,25 @@ void dequeue() {
     }
 }
 
-void display() {
+void display(){
     int i;
     if(front == -1)
         printf("No documents\n");
-    else {
+    else{
         for(i = front; i <= rear; i++)
             printf("%d ", queue[i]);
     }
     printf("\n");
 }
 
-int main() {
+int main(){
     int ch, x;
 
-    while(1) {
+    while(1){
         printf("\n1.Add\n2.Print\n3.Display\n4.Exit\n");
         scanf("%d", &ch);
 
-        switch(ch) {
+        switch(ch){
             case 1:
                 printf("Enter document id: ");
                 scanf("%d", &x);
@@ -222,33 +209,31 @@ int main() {
                 return 0;
         }
     }
-}
+} ## 🔹 Q5: Circular Queue
 
-Q5: Circular Queue
- Concept
+### 🧠 Concept
+**Circular Queue**
 
-Circular Queue
+### ⚙️ Algorithm
+- Start  
+- Initialize queue  
+- Enqueue using circular logic  
+- Dequeue using circular logic  
+- Display elements  
+- Stop  
 
- Algorithm
-Start
-Initialize queue
-Enqueue using circular logic
-Dequeue using circular logic
-Display elements
-Stop
-
- Code:
-
+### 💻 Code
+```c
 #include <stdio.h>
 
 #define MAX 5
 
 int queue[MAX], front = -1, rear = -1;
 
-void enqueue(int x) {
+void enqueue(int x){
     if((rear + 1) % MAX == front)
         printf("Queue Full\n");
-    else {
+    else{
         if(front == -1)
             front = 0;
         rear = (rear + 1) % MAX;
@@ -256,11 +241,12 @@ void enqueue(int x) {
     }
 }
 
-void dequeue() {
+void dequeue(){
     if(front == -1)
         printf("Queue Empty\n");
-    else {
+    else{
         printf("Deleted: %d\n", queue[front]);
+
         if(front == rear)
             front = rear = -1;
         else
@@ -268,14 +254,14 @@ void dequeue() {
     }
 }
 
-void display() {
+void display(){
     int i;
 
     if(front == -1)
         printf("Queue Empty\n");
-    else {
+    else{
         i = front;
-        while(1) {
+        while(1){
             printf("%d ", queue[i]);
             if(i == rear)
                 break;
@@ -285,14 +271,14 @@ void display() {
     printf("\n");
 }
 
-int main() {
+int main(){
     int ch, x;
 
-    while(1) {
+    while(1){
         printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
         scanf("%d", &ch);
 
-        switch(ch) {
+        switch(ch){
             case 1:
                 printf("Enter value: ");
                 scanf("%d", &x);
@@ -312,15 +298,3 @@ int main() {
         }
     }
 }
-
-
-Learning Outcomes:
-Understanding Stack and Queue operations
-Implementing real-world problems
-Strengthening C programming skills
-
-
-Conclusion:
-
-This project demonstrates how basic data structures like stacks and queues are implemented and used to solve practical problems efficiently.
-
